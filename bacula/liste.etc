@@ -1,0 +1,9 @@
+total 44
+-rw-r----- 1 root   bacula 9002 sept. 22 12:43 bacula-dir.conf
+-rw-r----- 1 root   root   1010 sept. 22 12:43 bacula-fd.conf
+-rw-r----- 1 bacula bacula 5940 sept. 22 12:43 bacula-sd.conf
+-rw-r----- 1 root   bacula  182 sept. 22 12:43 bconsole.conf
+-rw------- 1 root   root    442 sept. 22 12:43 common_default_passwords
+drwxr-xr-x 2 root   root   4096 sept. 22 12:47 old
+drwxr-xr-x 2 root   root   4096 sept. 22 12:43 scripts
+-rw-r----- 1 root   bacula  599 sept. 22 12:43 tray-monitor.conf
