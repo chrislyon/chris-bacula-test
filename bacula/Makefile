@@ -6,7 +6,8 @@ DIR_CONF=./bacula-dir.conf
 SD_CONF=./bacula-sd.conf
 FD_CONF=./bacula-fd.conf
 CONSOLE_CONF=./bconsole.conf
-TRAY_CONF=./tray-monitor.conf
+#TRAY_CONF=./tray-monitor.conf
+bat=./bat.conf
 
 SAV_DIR=./sav
 BACULA_CONF_DIR=/etc/bacula
@@ -36,7 +37,24 @@ install:
 
 .PHONY: restart
 
+#/etc/init.d/bacula-director restart
+#/etc/init.d/bacula-fd restart
+#/etc/init.d/bacula-sd restart
 restart:
-	/etc/init.d/bacula-director restart
-	/etc/init.d/bacula-fd restart
-	/etc/init.d/bacula-sd restart
+	service bacula-dir restart
+	service bacula-fd restart
+	service bacula-sd restart
+
+.PHONY: stop_service
+
+stop_service:
+	service bacula-dir stop
+	service bacula-fd stop
+	service bacula-sd stop
+
+.PHONY: start_service
+
+start_service:
+	service bacula-dir start
+	service bacula-fd start
+	service bacula-sd start
