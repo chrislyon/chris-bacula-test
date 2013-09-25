@@ -37,24 +37,21 @@ install:
 
 .PHONY: restart
 
-#/etc/init.d/bacula-director restart
-#/etc/init.d/bacula-fd restart
-#/etc/init.d/bacula-sd restart
 restart:
-	service bacula-dir restart
-	service bacula-fd restart
-	service bacula-sd restart
+	/etc/init.d/bacula-director restart
+	/etc/init.d/bacula-fd restart
+	/etc/init.d/bacula-sd restart
 
 .PHONY: stop_service
 
 stop_service:
-	service bacula-dir stop
-	service bacula-fd stop
-	service bacula-sd stop
+	/etc/init.d/bacula-director stop
+	/etc/init.d/bacula-fd stop
+	/etc/init.d/bacula-sd stop
 
 .PHONY: start_service
 
 start_service:
-	service bacula-dir start
-	service bacula-fd start
-	service bacula-sd start
+	/etc/init.d/bacula-director start
+	/etc/init.d/bacula-fd start
+	/etc/init.d/bacula-sd start
