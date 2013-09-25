@@ -6,8 +6,8 @@ DIR_CONF=./bacula-dir.conf
 SD_CONF=./bacula-sd.conf
 FD_CONF=./bacula-fd.conf
 CONSOLE_CONF=./bconsole.conf
-#TRAY_CONF=./tray-monitor.conf
-bat=./bat.conf
+TRAY_CONF=./tray-monitor.conf
+BAT=./bat.conf
 
 SAV_DIR=./sav
 BACULA_CONF_DIR=/etc/bacula
