@@ -2,9 +2,9 @@
 ## -------------------------
 ## nom des fichiers de conf
 ## -------------------------
-DIR_CONF=./bacula-dir.conf
-SD_CONF=./bacula-sd.conf
-FD_CONF=./bacula-fd.conf
+DIR_CONF=./trav/bacula-dir.conf
+SD_CONF=./trav/bacula-sd.conf
+FD_CONF=./trav/bacula-fd.conf
 CONSOLE_CONF=./bconsole.conf
 #TRAY_CONF=./tray-monitor.conf
 bat=./bat.conf
@@ -14,9 +14,19 @@ BACULA_CONF_DIR=/etc/bacula
 
 ALL_FILES=$(DIR_CONF) $(SD_CONF) $(FD_CONF) $(CONSOLE_CONF) $(TRAY_CONF)
 
+TEST_DIR=/root/chris-bacula-test/bacula/trav/
+INST_DIR=/etc/bacula/
+
 .PHONY: test
 
 test:
+	@echo "Purge répertoire de travail"
+	@rm -f trav/*.conf
+	@echo "Compilation des fichiers de conf ..."
+	@cat ./bacula-dir.conf | sed -e 's:!!BACULA_TRAV!!:$(TEST_DIR):' > $(DIR_CONF)
+	@cat ./bacula-sd.conf | sed -e 's:!!BACULA_TRAV!!:$(TEST_DIR):' > $(SD_CONF)
+	@cat ./bacula-fd.conf | sed -e 's:!!BACULA_TRAV!!:$(TEST_DIR):' > $(FD_CONF)
+	@cp ./bacula-dir-*.conf $(TEST_DIR)
 	bacula-dir -t -c $(DIR_CONF)
 	bacula-sd -t -c $(SD_CONF)
 	bacula-fd -t -c $(FD_CONF)
