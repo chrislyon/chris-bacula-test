@@ -43,7 +43,14 @@ sauve:
 .PHONY: install
 
 install:
-		cp $(ALL_FILES) $(BACULA_CONF_DIR)
+	@echo "Purge répertoire de travail"
+	@rm -f trav/*.conf
+	@echo "Compilation des fichiers de conf ..."
+	@cat ./bacula-dir.conf | sed -e 's:!!BACULA_TRAV!!:$(INST_DIR):' > $(DIR_CONF)
+	@cat ./bacula-sd.conf | sed -e 's:!!BACULA_TRAV!!:$(INST_DIR):' > $(SD_CONF)
+	@cat ./bacula-fd.conf | sed -e 's:!!BACULA_TRAV!!:$(INST_DIR):' > $(FD_CONF)
+	@cp ./bacula-dir-*.conf $(INST_DIR)
+	cp $(TEST_DIR)* $(BACULA_CONF_DIR)
 
 .PHONY: restart
 
